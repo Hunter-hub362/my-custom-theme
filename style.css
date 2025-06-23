@@ -1,0 +1,2404 @@
+/*
+Theme Name: APK Theme by Howtoinfo
+Theme URI: https://howtoinfo.xyz/
+Author: Your Name
+Author URI: https://howtoinfo.xyz/
+Description: A custom WordPress theme.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: my-starter-theme
+*/
+
+
+/* =Reset
+-------------------------------------------------------------- */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td, button {
+	border: 0;
+	font-family: inherit;
+	font-size: 100%;
+	font-style: inherit;
+	font-weight: inherit;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	vertical-align: baseline;
+}
+html {
+	font-size: 62.5%;
+	overflow-y: scroll;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+body {
+	background: #fff;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+	display: block;
+}
+ol, ul {
+	list-style: none;
+}
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+caption, th, td {
+	font-weight: normal;
+	text-align: left;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: "";
+}
+blockquote, q {
+	quotes: "" "";
+}
+
+a:hover,
+a:active {
+	outline: 0;
+}
+a img {
+	border: 0;
+}
+
+/* Global */
+:root {
+	--main-color: ##FFFFFF;
+	--button-color: #BBFBFF;
+	--a-color: #0073aa;
+	--low-color: #BBFBFF;
+	--dim-color: #BDBDBD;
+}
+
+html, body {
+	font-size: 15px;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+	line-height: 1.6;
+	background-color: var(--main-color);
+	color: #333;
+	height: 100%;
+	max-width: 100%;
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	min-height: 100vh;
+}
+
+a {
+	color: #0073aa;
+	text-decoration: none;
+}
+a:focus {
+    outline: none;
+}
+
+section {
+	position: relative;
+	border-bottom: 1px solid #e5e5e5;
+	width: 100%;
+	padding: 10px 0;
+}
+
+h2, h3, h4 {
+	font-size: 18px;
+	font-weight: 500;
+}
+
+li:before {
+	content: '›';
+	margin-right: 5px;
+}
+
+svg {
+	cursor: pointer;
+}
+
+/* Header */
+header {
+	background: #FFF;
+	color: #000;
+	padding: 5px 0;
+	box-shadow: 0 2px 0 0 #f5f5f5;
+	width: 100%;
+}
+
+.header-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 20px
+}
+
+header a {
+	color: 00FFDE;
+	font-size: 18px;
+	font-weight: 400;
+	text-decoration: none;
+}
+
+.header-right {
+	display: flex;
+	align-items: center;
+}
+
+/* post share */
+.post-share {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+
+.share-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	border-radius: 10%;
+	text-decoration: none;
+	border: 1px solid #E7E7E7;
+	cursor: pointer;
+	transition: background 0.3s;
+}
+
+.share-btn svg {
+	fill: #333;
+	width: 20px;
+	height: 20px;
+}
+
+.share-btn:hover, .post-share span:hover {
+	background: rgba(64,135,247,0.1);
+	border-color: transparent;
+}
+
+.share-btn svg:hover {
+	fill: var(--a-color);
+}
+
+.copy-link {
+	background: transparent;
+}
+
+/* Main Content */
+main {
+	padding: 5px 20px;
+	flex: 1;
+}
+
+@media (max-width: 767px) {
+	main {
+		padding: 5px 10px;
+	}
+	.header-container {
+		padding: 0 10px;;
+	}
+}
+
+
+/* Sidebar */
+.sidebar {
+	width: 80%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: -100%;
+	color: #FFF;
+	background: var(--main-color);
+	transition: left 0.3s ease-in-out;
+	z-index: 1002;
+	overflow-y: auto;
+	padding: 10px;
+}
+
+.sidebar a {
+    border-bottom: none !important;
+}
+
+.sidebar a {
+	background: #FFF;
+}
+
+.sidebar h2 {
+	color: #333;
+	font-weight: bold;
+}
+
+.searches {
+	margin-bottom: 10px;
+}
+
+.categories {
+	margin-bottom: 20px;
+}
+
+/* Sidebar Active */
+.sidebar.active {
+	left: 0;
+}
+
+.search-form form {
+	display: flex;
+}
+
+.search-form input[type="search"] {
+	width: 100%;
+	padding: 5px 8px;
+	border: 1px solid #a9a9a9;
+	box-shadow: inset 0 1px 2px rgba(10, 10, 10, .1);
+	margin: 0;
+	border-radius: 4px 0 0 4px;
+	outline: 0;
+}
+
+.search-form button[type="submit"] {
+	background-color: #1a73d6;
+	color: #fff;
+	padding: 5px .75em;
+	cursor: pointer;
+	justify-content: center;
+	text-align: center;
+	vertical-align: top;
+	border-radius: 0 5px 5px 0;
+	transition: box-shadow .15s, background-color .15s, transform .1s, opacity .1s;
+	align-items: baseline;
+}
+
+/* Overlay */
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	display: none;
+	z-index: 1000;
+}
+
+.ads {
+	margin: 10px 0;
+	text-align: center;
+	width: 100%;
+}
+
+
+/* keys and show more */
+.keys {
+	padding: 10px 0;
+}
+
+.keys span {
+	display: inline-block;
+	color: #6f6f6f;
+	font-size: 12px;
+	border: 1px solid #eee;
+	padding: 4px 10px;
+	background: #f8f9fa;
+	border-radius: 4px;
+	margin-right: 5px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+.keys span:hover {
+	background: rgba(64,135,247,0.1);
+	border-color: transparent;
+}
+
+.fade-effect {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 80px;
+	background: linear-gradient(to top, #fff, rgba(255,255,255,0));
+}
+
+#show-more-btn {
+	display: block;
+	margin: 10px auto;
+	cursor: pointer;
+	border: none;
+	border-radius: 5px;
+	background: transparent;
+	color: var(--button-color);
+}
+
+#show-more-btn:after {
+	content: "";
+	border: solid #00875f;
+	border-width: 0 2px 2px 0;
+	display: inline-block;
+	padding: 3px;
+	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	margin-left: 6px;
+	top: -3px;
+	position: relative;
+}
+
+code {
+	font-style: italic;
+	color: var(--a-color)
+}
+
+li {
+	padding: 0 10px;
+}
+
+h2 {
+	display: flex;
+}
+
+.ultabs {
+	align-items: stretch;
+	display: block;
+	font-size: 1rem;
+	overflow: hidden;
+	overflow-x: auto;
+	white-space: nowrap;
+}
+
+.ultabs ul {
+	align-items: center;
+	border-bottom: 1px solid #e5e5e5;
+	display: flex;
+	flex-grow: 1;
+	flex-shrink: 0;
+	justify-content: flex-start;
+	padding-left: 0;
+	margin: 0;
+	color: #6f6f6f;
+}
+
+.ultabs li {
+	display: inline-block;
+	cursor: pointer;
+}
+
+.ultabs li:before {
+	display: none;
+}
+
+.ultabs a {
+	display: block;
+	align-items: center;
+	color: #6f6f6f;
+	padding: .5em .6em;
+}
+
+.active a {
+		border-bottom: .1875rem solid #1a73d6;
+}
+
+.inline-flex {
+	display: inline-flex;
+	align-items: center;
+}
+
+.ultabs svg {
+	padding: 2px;
+}
+
+/* breadcrumb */
+.breadcrumb {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.breadcrumb a,
+.breadcrumb span {
+	text-decoration: none;
+	color: var(--a-color);
+	position: relative;
+	margin-left: 5px;
+}
+
+.breadcrumb a + a::before,
+.breadcrumb span::before {
+	content: "›";
+	color: #555;
+	margin-right: 5px;
+}
+
+/* App Links and Buttons */
+#app a {
+	display: flex;
+	flex-direction: row;
+	padding: 5px;
+	color: black;
+	text-decoration: none;
+	gap: 10px;
+}
+
+/* Homepage Styles */
+#apps-for-you {
+  max-width: 100%;
+  display: grid;
+}
+
+@media (min-width: 600px) {
+  #apps-for-you { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 900px) {
+  #apps-for-you { grid-template-columns: repeat(3, 1fr); }
+}
+
+#app {
+	width: 100%;
+	padding: 5px;
+	box-sizing: border-box;
+	border: 1px solid transparent;
+	transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out;
+	border-radius: 20px;
+}
+
+#app:hover {
+	background-color: var(--low-color);
+	border-radius: 20px;
+	border-color: var(--button-color);
+	border-color: black;
+	transform: translateY(5px);
+}
+
+.app-icon img {
+	width: 75px;
+	height: 75px;
+	border-radius: 10px;
+	box-shadow:0 1px 2px 0 rgba(60,64,67,.3),0 1px 3px 1px rgba(60,64,67,.15);
+	fit: cover;
+}
+
+.app-meta {
+	display: flex;
+	flex-direction: column;
+	color: var(--dim-color);
+	font-size: 14px;
+}
+
+@media (max-width: 600px) {
+	.app-details {
+		flex-direction: column;
+	}
+	.left-side {
+		margin-bottom: 20px;
+	}
+	.right-side {
+		width: 100%;
+		gap: 5px;
+	}
+}
+
+/* Post Details */
+/* Download button */
+.buttons {
+	display: flex;
+    flex-direction: column; /* CHANGED THIS */
+	width: 100%;
+}
+
+.download-btn {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	background-color: #8DD8FF;
+	transition: background-color 0.3s ease;
+	color: #FFF;
+	padding: 8px 12px;
+	border-radius: 10px;
+	cursor: pointer;
+	width: 100%;
+	max-width: 100%;
+	gap: 10px;
+	justify-content: space-between;
+	transition: background-color 0.3s ease;
+}
+
+.download-btn.disabled {
+	background-color: #72b596 !important;
+	cursor: not-allowed;
+	pointer-events: none;
+}
+
+.button-left {
+	display: flex;
+	flex-direction: column;
+}
+
+.button-right svg {
+	width: 30px;
+	height: 30px;
+}
+
+.button-top {
+	display: inline-flex;
+	align-content: center;
+	font-size: 18px;
+}
+
+.button-top span {
+	margin: 0 5px;
+}
+
+.button-bottom span {
+	font-size: 14px;
+}
+
+.download-btn:hover:not(.disabled) {
+	background: #8DD8FF;
+	transform: translateY(3px);
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 767px) {
+	.download-btn {
+		width: 100%;
+		padding: 8px 12px;
+	}
+}
+
+/* Loader spinner */
+.loader {
+	border: 2px solid transparent;
+	border-top: 3px solid #ffffff;
+	border-radius: 50%;
+	width: 25px;
+	height: 25px;
+	animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+	to { transform: rotate(360deg); }
+}
+
+.app-details {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.icon img {
+	width: 100px;
+	height: 100px;
+	margin-right: 10px;
+	border-radius: 15px;
+    box-shadow:0 1px 2px 0 rgba(60,64,67,.3),0 1px 3px 1px rgba(60,64,67,.15);
+}
+
+.left-side {
+	display: flex;
+	flex-direction: row;
+}
+
+.right-side {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	margin-right: 10px;
+}
+
+.last-update {
+	color: var(--dim-color);
+	text-decoration: none;
+}
+
+.app-description {
+	margin-bottom: 10px;
+}
+
+.app-description p, h2 {
+	padding: 5px 0;
+}
+
+/* Screenshots */
+.screenshotsbox {
+	padding: 10px;
+}
+
+.screenshots {
+	white-space: nowrap;
+	overflow-x: auto;
+}
+
+.screenshots img {
+	height: 200px;
+	border-radius: 15px;
+}
+
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+}
+
+/* File Download Section */
+.files-area {
+	display: flex;
+	flex-direction: column;
+}
+
+.file-download {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+}
+
+.files-area a {
+	text-decoration: none;
+}
+
+.file-icon img {
+	width: 50px;
+	height: 50px;
+	border-radius: 5px;
+}
+
+.show-left {
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+}
+
+.good-title{
+	color: #0073aa;
+	font-size: 16px;
+	display: flex;
+	gap: 5px;
+}
+
+.file-meta {
+	display: flex;
+	color: var(--dim-color);
+	gap: 5px;
+}
+
+.show-right {
+	color: var(--dim-color);
+}
+
+.file-download:hover {
+	background: var(--low-color);
+}
+
+.files-loading {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 18px;
+	font-weight: bold;
+	color: var(--a-color);
+	margin: 10px 0;
+}
+
+.files-loading::after {
+    content: "";
+    width: 24px;
+    height: 24px;
+    border: 3px solid #0073aa;
+    border-top: 3px solid transparent;
+    border-radius: 50%;
+    margin-left: 10px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+/* Center the pagination */
+.custom-pagination {
+	text-align: center;
+	margin: 20px 0;
+}
+
+.custom-pagination a {
+	text-decoration: none;
+}
+
+.custom-pagination .page-numbers {
+	display: inline-block;
+	margin: 0 5px;
+}
+
+.custom-pagination .prev, .custom-pagination .next {
+	font-weight: bold;
+}
+
+
+/* Footer */
+footer {
+	background: var(--main-color);
+	text-align: center;
+	padding: 10px;
+}
+
+
+/* extra css */
+.site-pages {
+	font-size: 16px;
+}
+
+.site-pages h2 {
+	font-size: 18px;
+}
+
+.site-pages h1 {
+	font-size: 20px;
+}
+
+.site-pages p {
+	padding: 5px
+}
+
+.contact-form form {
+	display: flex;
+	flex-direction: column;
+	margin: 20px auto;
+	padding: 15px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	background: #f9f9f9;
+}
+.contact-form input, textarea {
+	padding: 8px;
+	margin: 5px 0;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+}
+
+.contact-form input[type="submit"] {
+	background-color: var(--a-color);
+	color: #FFF;
+}
+
+.title{
+	font-size: 18px;
+}
+
+.metas {
+	display: flex;
+	flex-direction: column;
+}
+
+.metas span {
+	color: var(--dim-color)
+}
+
+#post-cloud {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+}
+
+.cloud-item {
+	display: inline-block;
+	padding: 3px 10px;
+	border-radius: 8px;
+	text-decoration: none;
+	color: #333;
+	font-size: 14px;
+	box-shadow: rgb(0 0 0 / 8%) 0 0 0 1px
+}
+
+.cloud-item:hover {
+	background-color: var(--low-color)
+}
+
+/* Overlay (Background) */
+.popoverlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 999;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+/* Popup box */
+.popup {
+	display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0.8);
+	width: 350px;
+	background: transparent;
+	border-radius: 15px;
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+	z-index: 1000;
+	opacity: 0;
+	transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Show popup with animation */
+.popoverlay.active {
+	display: block;
+	opacity: 1;
+}
+
+.popup.active {
+	display: block;
+	opacity: 1;
+	transform: translate(-50%, -50%) scale(1);
+}
+
+/* Popup header */
+.popup-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: var(--button-color);
+	color: white;
+	padding: 10px 10px;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+}
+
+.popup-title {
+	font-size: 18px;
+}
+
+.close-btn {
+	background: transparent;
+	border: none;
+	color: white;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+/* Popup content */
+.popup-content {
+	padding: 10px;
+	font-size: 16px;
+	color: #333;
+	background: var(--low-color);
+	border-radius: 0 0 15px 15px;
+}
+
+.popup-content p {
+	padding: 10px 0;
+}
+
+.popup-content a {
+	border-bottom: none;
+}
+
+/* persons */
+/* person single */
+.profile {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.person-bio {
+	text-align: center;
+	align-items: center;
+	width: 100%;
+}
+
+.photo {
+	background: rgb(2,0,36);
+	background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,24,170,1) 100%, rgba(0,212,255,1) 100%);
+	background-attachment: fixed;
+	color: #ffffff;
+	width: 100%;
+	border-radius: 20px;
+	margin-bottom: 10px;
+	padding: 20px 0;
+}
+
+
+.photo img {
+	border-radius: 100px;
+	width: 150px;
+	height: 150px;
+	border: 2px solid white;
+	padding: 5px;
+}
+
+.name {
+	display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.name svg {
+    fill: #1877F2;
+}
+
+
+.name {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.bio {
+	color: var(--dim-color);
+}
+
+.p-details {
+	padding: 0 20px;
+}
+
+.social {
+	display: flex;
+	gap: 10px;
+	padding: 10px;
+}
+
+.social span {
+	background: var(--low-color);
+	border-radius: 5px;
+	padding: 2px 8px;
+	border: 1px solid var(--dim-color);
+	cursor: pointer;
+}
+
+.social a {
+	color: #333;
+}
+
+.social span:hover {
+	background: lightblue;
+	border-color: transparent;
+	color: #FFF;
+}
+
+/* post checked by */
+.person-profile {
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+	padding: 10px;
+}
+
+@media (max-width: 768px) {
+	.person-profile {
+		flex-direction: column;
+	}
+}
+
+.p-box {
+	display: flex;
+	color: #333;
+}
+
+.p-info {
+	display: flex;
+	flex-direction: column;
+}
+
+.p-name {
+	font-size: 18px;
+}
+
+.p-bio {
+	color: var(--dim-color);
+}
+
+/* Chat container */
+.chat-container {
+	position: fixed;
+	bottom: 50px;
+	right: 10px;
+	background: #fff;
+	border-radius: 12px;
+	width: 80%;
+	height: 70%;
+	box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+	overflow: hidden;
+	display: none;
+	flex-direction: column;
+}
+
+/* Chat header */
+.chat-header {
+	display: flex;
+	background: var(--button-color);
+	color: white;
+	padding: 5px 10px;
+	display: flex;
+	font-size: 16px;
+	justify-content: space-between;
+}
+
+.chatbtns svg {
+	fill: #FFF;
+}
+
+/* Chat messages */
+.chat-box {
+	height: 100%;
+	overflow-y: auto;
+	padding: 10px;
+	background: var(--low-color);
+	font-size: 14px;
+}
+
+/* Predefined messages */
+.pre-message-container {
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	background: var(--low-color)
+}
+
+.howto {
+	font-size: 18px;
+}
+
+.pre-message {
+	color: #28a745;
+	cursor: pointer;
+}
+
+/* User & AI messages */
+.chat-box p {
+	padding: 8px 12px;
+	border-radius: 8px;
+	margin: 5px 0;
+	max-width: 100%;
+	line-height: 1.4;
+}
+
+.user-msg {
+	align-self: flex-end;
+	text-align: right;
+	margin: 10px;
+}
+
+.ai-msg {
+	background: #e9ecef;
+	color: black;
+	align-self: flex-start;
+	border-radius: 5px;
+}
+
+/* Input area */
+.input-area {
+	display: flex;
+	border-top: 1px solid #ddd;
+	background: #f8f9fa;
+}
+
+.input-area input {
+	flex: 1;
+	border: none;
+	padding: 10px;
+	font-size: 14px;
+	border-radius: 8px;
+	outline: none;
+	background: #f8f9fa;
+}
+
+.input-area button {
+	background: var(--button-color);
+	color: white;
+	border: none;
+	padding: 10px 15px;
+	font-size: 14px;
+	margin-left: 5px;
+	cursor: pointer;
+	transition: background 0.3s ease;
+}
+
+.input-area button:hover {
+	background: #258a3d;
+}
+
+
+.typing .dots::after {
+    content: " ";
+    animation: dots 1.2s steps(4, end) infinite;
+}
+
+@keyframes dots {
+    0%, 100% { content: "Typing"; }
+    25% { content: "Typing."; }
+    50% { content: "Typing.."; }
+    75% { content: "Typing..."; }
+}
+
+/* blog post */
+.blog {
+	font-size: 16px;
+}
+
+.blog-content img {
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+	border-radius: 20px;
+	margin: 10px 0;
+}
+
+.blog h1 {
+	font-size: 20px;
+	padding: 10px 0;
+}
+
+.blog-content p {
+	padding: 10px 0;
+}
+
+.blog span {
+	color: var(--dim-color);
+}
+
+/* blog archive */
+.blog-list {
+	list-style: none;
+	padding: 10px 0;
+}
+
+.blogst {
+	font-size: 18px;
+}
+
+.blog-meta span {
+	color: #333 !important;
+}
+
+.ablog {
+	display: flex;
+	padding: 10px;
+	gap: 10px;
+	border-radius: 20px;
+	border: 1px solid transparent;
+}
+
+.ablog:hover {
+	border-color: var(--button-color);
+	background: var(--low-color);
+}
+
+.thumb img {
+	width: 200px;
+	height: 100px;
+	object-fit: cover;
+	border-radius: 10px;
+}
+
+.blog-meta {
+	display: flex;
+	flex-direction: column;
+}
+
+.blog-info {
+	color: #666;
+}
+
+.blog-date {
+	color: var(--dim-color);
+}
+
+.noapk {
+	display: flex;
+	flex-direction: column;
+	color: var(--dim-color);
+	margin: 20px 0;
+	text-align: center;
+}
+
+.editor {
+	display: flex;
+	gap: 10px;
+	margin-top: 17px;
+}
+
+.editor-img img {
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+	border: 2px solid var(--a-color);
+	padding: 2px;
+	transition: border 0.3s ease;
+	cursor: pointer;
+}
+
+.editor-img img:hover {
+	border: 2px dotted var(--a-color);
+}
+
+
+.editor-details {
+	display: flex;
+	flex-direction: column;
+}
+
+.editor-name a {
+	font-size: 16px;
+	color: #333 !important;
+}
+
+.editor-name:hover a {
+	color: var(--a-color) !important;
+}
+
+.editor-details span, .bio span {
+	margin: 5px;
+	font-size: 12px;
+	background: var(--low-color);
+	padding: 4px 6px;
+	border-radius: 5px;
+	color: var(--a-color);
+}
+
+.editor-tag {
+	font-size: 12px;
+	color: var(--dim-color);
+}
+
+.editor-bio {
+	font-size: 12px;
+	color: var(--dim-color);
+}
+
+.editor-tag {
+	display: inline-flex;
+}
+
+.editor-tag svg {
+	width: 14px;
+	fill: var(--dim-color);
+	margin-right: 3px;
+}
+
+.badge {
+	display: inline-flex;
+	background: var(--low-color);
+	fill: var(--button-color);
+	border-radius: 5px;
+	color: var(--button-color);
+	font-size: 12px;
+	align-items: center;
+	padding: 2px 5px;
+	align-content: center;
+	cursor: pointer;
+	border: 1px solid var(--button-color);
+}
+
+.badge svg {
+	width: 16px;
+}
+
+.label {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+}
+
+.label svg {
+	fill: var(--dim-color);
+	width: 18px;
+}
+
+/* APP INFO */
+.package-details {
+  display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding-right: 10px;
+}
+
+.item {
+	display: flex;
+	justify-content: space-between;
+}
+
+.app-meta span {
+	display: inline-flex;
+	align-items: center;
+	gap: 3px;
+}
+
+.app-meta svg {
+	width: 16px;
+	fill: var(--dim-color);
+}
+
+body {
+	margin-bottom: 40px;
+}
+
+
+header {
+  background: #f2f8fc;
+}
+
+.header-right svg {
+	width: 24px;
+	height: 24px;
+	fill: #333;
+}
+
+.header-right span {
+	display: inline-flex;
+	align-items: center;
+}
+
+.header-right {
+	gap: 10px;
+}
+
+.bottom-sticky-menu{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background: #f2f8fc;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	padding: 10px 0;
+	box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+	z-index: 9999;
+}
+
+.bottom-sticky-menu span {
+	display: flex;
+	flex: inline-flex;
+	color: var(--button-color);
+	font-size: 16px;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	cursor: pointer;
+}
+
+.bottom-sticky-menu svg {
+	fill: var(--button-color);
+}
+
+.title span {
+	color: var(--dim-color);
+	padding: 0 6px;
+	font-size: 12px;
+}
+
+.single-app-meta h2 {
+	padding: 0;
+	display: inline-flex;
+	align-items: baseline;
+}
+
+.important-note {
+	display: inline-block;
+	padding: 3px 8px;
+	border: 1px solid #f5c2c7;
+	background-color :#f8d7da;
+	color: #842029;
+	border-radius: 4px;
+	margin: 10px 0;
+}
+
+.footerx {
+	margin-bottom: 60px;
+}
+
+.app-description h2, h3, b, strong {
+	font-weight: normal;
+}
+
+/* faq */
+.faq-container {
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+}
+
+.faq-item {
+	margin-bottom: 12px;
+	border: 1px solid #e0e0e0;
+	border-radius: 8px;
+	overflow: hidden;
+	background-color: #fff;
+	transition: border-color 0.3s ease;
+}
+
+.faq-question {
+	width: 100%;
+	text-align: left;
+	background-color: #fff;
+	border: none;
+	font-size: 16px;
+	padding: 16px;
+	cursor: pointer;
+	outline: none;
+	display: block;
+	transition: background-color 0.3s ease;
+}
+
+.faq-answer {
+	display: none;
+	padding: 16px;
+	background-color: #f9f9f9;
+	border-top: 1px solid #e0e0e0;
+	color: #333;
+	line-height: 1.6;
+}
+
+.faq-item.open .faq-answer {
+	display: block;
+}
+
+.faq-item.open {
+	border-color: var(--button-color);
+}
+
+.faq-item.open .faq-question {
+	background-color: #f0f0f0;
+}
+
+.faq-question:hover {
+	background-color: #f5f5f5;
+}
+
+.menu-toggle {
+    display: none !important;
+}
+
+/* --- Center Popup Search Bar Styles --- */
+
+/* Overlay jo poori screen ko cover karega */
+.search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Black color with transparency */
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Search bar jo overlay ke upar aayega */
+.search-popup-form {
+    position: fixed;
+    top: 20%; /* Center se thora upar */
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8); /* Shuru mein chota */
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Body class jab search active ho */
+body.search-modal-open {
+    overflow: hidden; /* Page ko scroll hone se rokein */
+}
+
+body.search-modal-open .search-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+body.search-modal-open .search-popup-form {
+    top: 20%;
+    transform: translate(-50%, -50%) scale(1); /* Poora size dikhayein */
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Form ki andar ki styling */
+.search-popup-form .header-search-form {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    width: 90vw;
+    max-width: 600px;
+    padding: 5px;
+    /* Yeh line add karein, aap color aur motai (2px) badal sakte hain */
+    border: 2px solid #BBFBFF;
+}
+
+.search-popup-form .header-search-input {
+    border: none;
+    outline: none;
+    padding: 15px;
+    background: transparent;
+    width: 100%;
+    font-size: 1.2rem; /* Thora bara font */
+    color: #333;
+}
+
+.search-popup-form .header-search-submit {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+}
+
+.search-popup-form .header-search-submit svg {
+    width: 20px;
+    height: 20px;
+    fill: #555;
+}
+
+/* Header mein search button ki styling */
+.search-popup-toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.search-popup-toggle svg {
+    width: 20px;
+    height: 20px;
+    fill: #333;
+}
+
+/* --- End Center Popup Search Bar Styles --- */
+
+/* --- Search Page General Styles --- */
+
+.simple-search-page {
+    background-color: #fff; /* Changed to white to match most theme bodies */
+    padding: 20px 0;
+}
+
+.search-page-container {
+    max-width: 1200px; /* Wider for grid layout */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.search-page-title {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 15px;
+}
+
+.search-page-title span {
+    color: #1a73d6;
+}
+
+/* No Results Simple Styling */
+.no-results-simple {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.no-results-simple p {
+    font-size: 1.2rem;
+    color: #5f6368;
+}
+
+/* Pagination Styling */
+.pagination {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.page-numbers {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #1a73d6;
+}
+.page-numbers.current,
+.page-numbers:hover {
+    background-color: #f0f6ff;
+    border-color: #d2e3fc;
+}
+.page-numbers.current {
+    font-weight: bold;
+}
+
+/* --- End Search Page General Styles --- */
+
+/* --- New Footer Design --- */
+
+.new-footer {
+    background-color: #fff;
+    border-top: 1px solid #e9ecef;
+    padding: 50px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: #555;
+}
+
+.new-footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+}
+
+.footer-column .footer-logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #212529;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.footer-column .footer-copyright {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #6c757d;
+}
+
+.footer-column h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #212529;
+    margin: 0 0 5px 0;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+/* Orange line under headings, just like the image */
+
+.footer-column.links-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column.links-column li {
+    margin-bottom: 5px;
+}
+
+.footer-column.links-column a {
+    text-decoration: none;
+    color: #555;
+    transition: color 0.2s ease-in-out;
+}
+
+.footer-column.links-column a:hover {
+    color: #8DD8FF; /* Orange color on hover */
+    
+}
+
+/* --- End New Footer Design --- */
+/* Footer ki lists se '>' ka nishan hatane ke liye */
+.footer-column.links-column li::before {
+    content: none;
+    margin-right: 0;
+}
+
+
+/* --- Naye Responsive Navigation Menu Ke Liye Styles --- */
+
+/* 1. Desktop Navigation Menu Ki Styling */
+.main-navigation {
+	flex-grow: 1; /* Yeh menu ko space dega */
+	display: flex;
+	justify-content: center; /* Links ko center mein rakhega */
+}
+
+.main-navigation ul {
+	display: flex;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.main-navigation li a {
+	display: block;
+	padding: 1rem 1.5rem;
+	color: #333;
+	text-decoration: none;
+	font-size: 16px;
+	font-weight: 500;
+	transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    border-radius: 8px;
+}
+
+.main-navigation li a:hover {
+	color: #0073aa;
+    background-color: #eaf5ff;
+}
+
+/* 2. Sidebar Ke Andar Navigation Links Ki Styling */
+.sidebar-nav {
+	padding: 10px;
+	border-bottom: 1px solid #e5e5e5;
+	margin-bottom: 15px;
+}
+
+.sidebar-nav h2 {
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.sidebar-nav ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.sidebar-nav li::before {
+	content: '›'; /* Aapke theme jaisa '›' nishan */
+	margin-right: 8px;
+    color: #555;
+}
+
+.sidebar-nav li a {
+	display: block;
+	padding: 12px 10px;
+	color: #0073aa;
+	text-decoration: none;
+	font-size: 16px;
+	border-radius: 5px;
+}
+
+.sidebar-nav li a:hover {
+	background-color: #f0f0f0;
+}
+
+
+/* 3. Mobile Ke Liye Responsive Code */
+@media (max-width: 768px) {
+	/* Desktop menu ko mobile par chupayein */
+	.main-navigation {
+		display: none;
+	}
+
+	/* Mobile par menu toggle (hamburger icon) ko dikhayein */
+	.menu-toggle {
+		display: inline-flex !important; /* !important zaroori hai agar koi aur rule isko hide kar raha ho */
+        align-items: center;
+	}
+
+    /* Header container ko adjust karein takeh sab cheezein theek se fit hon */
+    .header-container {
+        justify-content: space-between;
+    }
+    .site-title {
+        flex-grow: 1; /* Title ko space dega */
+    }
+    .header-right {
+        gap: 15px; /* Search aur menu icon ke beech space */
+    }
+}
+
+/* ==================================
+    HEADER MENU FIX - BY GEMINI
+    ================================== */
+
+/* Problem 1 ka hal: Desktop menu ke items se '>' ka nishan hatana */
+.main-navigation ul li:before {
+    content: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Problem 2 ka hal: Vertical alignment ko theek karna */
+.header-container {
+    display: flex;
+    align-items: center; /* Sab cheezon ko vertically center karein */
+    justify-content: space-between;
+}
+
+/* Menu ki spacing aur padding ko behtar karna */
+.main-navigation {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center; /* Links ko center mein rakhega */
+}
+
+/* Vertical padding kam kar di hai taake height theek ho jaye */
+.main-navigation li a {
+    padding: 8px 15px; /* Padding kam kardi hai */
+}
+
+/* Yeh rule sidebar ke menu ko nahi chherega, sirf desktop menu ko theek karega */
+.sidebar .sidebar-nav ul li:before {
+	content: '›' !important; /* Sidebar mein nishan wapis lagayein */
+	margin-right: 8px !important;
+}
+
+/* =========================================================
+    MOBILE MENU & SIDEBAR STYLING FIX - 21 June 2025
+    ========================================================= */
+
+/* --- Sidebar ki behtar styling --- */
+
+/* Sidebar ka background color solid white rahega */
+.sidebar {
+    background: #FFFFFF;
+}
+
+/* Sidebar ke andar navigation container */
+.sidebar-nav {
+    margin-top: 40px; /* Thora sa neeche se shuru ho */
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Sidebar ke links se purana '>' nishan hatana */
+.sidebar-nav li:before {
+    display: none;
+}
+
+.sidebar-nav li a {
+    display: block;
+    padding: 15px 25px; /* Achi spacing */
+    color: #333; /* Text ka color */
+    font-size: 17px;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid #f0f0f0; /* Links ke beech halki line */
+    background: none !important; /* IMPORTANT: Transparent background hatane ke liye */
+    transition: background-color 0.2s ease;
+}
+
+/* Hover karne par link ka background change hoga */
+.sidebar-nav li a:hover {
+    background-color: #f5f5f5;
+}
+
+
+/* --- Mobile Layout ko theek karne ke liye Media Query --- */
+
+/* Humne isko 900px kar diya hai taake tablet par bhi theek kaam kare */
+@media (max-width: 900px) {
+    /* Desktop menu ko mobile/tablet par chupayein */
+    .main-navigation {
+        display: none !important;
+    }
+
+    /* Mobile par menu toggle (hamburger icon) ko dikhayein */
+    .menu-toggle {
+        display: inline-flex !important;
+        align-items: center;
+    }
+
+    /* Header container ko adjust karein */
+    .header-container {
+        justify-content: space-between;
+    }
+    .site-title {
+        flex-grow: 1;
+    }
+}
+
+/* --- Header Alignment Fix --- */
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.main-navigation {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-start;
+	padding-left: 20px; /* Logo se 30px ka faasla */
+}
+.main-navigation li a {
+    padding: 8px 15px;
+}
+.main-navigation ul li:before {
+    content: none !important;
+}
+
+/* --- New Sidebar Styling --- */
+.sidebar {
+    background: #FFFFFF;
+}
+.sidebar-nav {
+    margin-top: 40px;
+}
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sidebar-nav li:before {
+    display: none;
+}
+.sidebar-nav li a {
+    display: block;
+    padding: 15px 25px;
+    color: #333;
+    font-size: 17px;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid #f0f0f0;
+    background: none !important;
+    transition: background-color 0.2s ease;
+}
+.sidebar-nav li a:hover {
+    background-color: #f5f5f5;
+}
+
+/* --- Responsive Layout Fix --- */
+@media (max-width: 900px) {
+    .main-navigation {
+        display: none !important;
+    }
+    .menu-toggle {
+        display: inline-flex !important;
+        align-items: center;
+    }
+}
+
+/* =================================
+    FINAL FOOTER STYLING - 21 June 2025
+    ================================= */
+
+/* Main footer container */
+.site-footer {
+    background-color: #f9f9f9;
+    color: #555;
+    padding: 40px 20px 20px 20px;
+    border-top: 1px solid #e7e7e7;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 3-column grid layout */
+.footer-main-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr; /* Pehla column bara, baaki do chotay */
+    gap: 40px; /* Columns ke beech faasla */
+    margin-bottom: 30px;
+}
+
+/* Left column ki styling */
+.footer-about-section .footer-site-logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #222;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.footer-about-section .footer-welcome-heading {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.footer-about-section .footer-description-paragraph {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Middle aur Right columns ki styling */
+.footer-links-section h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.footer-links-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* '>' ka nishan hatana */
+.footer-links-section li::before {
+    content: none;
+}
+
+.footer-links-section li {
+    margin-bottom: 10px;
+    padding: 0;
+}
+
+.footer-links-section a {
+    color: #555;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-links-section a:hover {
+    color: #0073aa;
+}
+
+
+/* Neeche wale hissay ki styling */
+.footer-bottom-bar {
+    border-top: 1px solid #e7e7e7;
+    padding-top: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.footer-social-row {
+    margin-bottom: 15px;
+}
+
+/* =================================
+    FINAL SOCIAL ICONS STYLING (WITH DESIRED HOVER EFFECTS, NO UNWANTED BLUE)
+    ================================= */
+.footer-social-row {
+    display: flex;
+    justify-content: center; /* Icons ko center karne ke liye */
+    gap: 15px; /* Icons ke beech space */
+    margin-bottom: 20px; /* Social icons ke neeche space */
+    padding-top: 20px; /* Thoda space upar se */
+}
+
+.footer-social-row .social-icon {
+    display: inline-flex; /* Icons aur unke containers ko align karne ke liye */
+    align-items: center;
+    justify-content: center;
+    width: 45px; /* Icon circle ki चौड़ाई (width) */
+    height: 45px; /* Icon circle ki ऊंचाई (height) */
+    border-radius: 50%; /* Isse circular banega */
+    color: #fff; /* Icons ka color (safed) */
+    text-decoration: none; /* Underline hatane ke liye */
+    /* Ab transition sirf transform aur box-shadow ke liye hai */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Thoda shadow dene ke liye */
+    outline: none; /* Browser default outline ko bhi hata dega */
+}
+
+.footer-social-row .social-icon i {
+    font-size: 22px; /* Icon ka size circle ke andar */
+}
+
+/* Har icon ke liye specific background color */
+.footer-social-row .facebook { background-color: #1877F2; } /* Facebook Blue */
+.footer-social-row .pinterest { background-color: #E60023; } /* Pinterest Red */
+.footer-social-row .twitter { background-color: #000000; } /* X/Twitter Black */
+.footer-social-row .telegram { background-color: #0088CC; } /* Telegram Blue */
+.footer-social-row .youtube { background-color: #FF0000; } /* YouTube Red */
+
+/* --- HOVER EFFECTS YAHAN CONTROL KIYE JAAYENGE --- */
+.footer-social-row .social-icon:hover {
+    /* Background color ko uske original color par hi set rakhen */
+    /* Isse woh blue effect nahi aayega, icon ka apna color hi rahega */
+
+    transform: translateY(-5px) scale(1.05); /* Hover karne par thoda upar uthega aur bada hoga */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Zyada gehra shadow, ab color theek hai */
+}
+
+/* toh neeche wale code ko uncomment karke har icon ka original color yahan specify kar dein: */
+/*
+.footer-social-row .facebook:hover { background-color: #1877F2; }
+.footer-social-row .pinterest:hover { background-color: #E60023; }
+.footer-social-row .twitter:hover { background-color: #000000; }
+.footer-social-row .telegram:hover { background-color: #0088CC; }
+.footer-social-row .youtube:hover { background-color: #FF0000; }
+*/
+
+
+/* =================================
+    FOOTER LAYOUT & SOCIAL ICONS FIXES (FOR DESKTOP & MOBILE) -
+    (Yeh code style.css ke bilkul aakhir mein add karein)
+    ================================= */
+
+/* Desktop par footer-bottom-bar ko poori width dein */
+.site-footer .footer-main-grid .footer-bottom-bar {
+    grid-column: 1 / -1; /* Isse yeh block desktop par poori grid row cover karega */
+}
+
+/* Social Icons Styling (Fonts & Colors - Base State) */
+/* Yeh wohi code hai jo aapne pehle Font Awesome icons ke liye diya tha */
+.footer-social-row {
+    display: flex;
+    justify-content: center; /* Icons ko center karne ke liye */
+    gap: 15px; /* Icons ke beech space */
+    margin-bottom: 20px; /* Social icons ke neeche space */
+    padding-top: 20px; /* Thoda space upar se */
+}
+
+.footer-social-row .social-icon {
+    display: inline-flex; /* Icons aur unke containers ko align karne ke liye */
+    align-items: center;
+    justify-content: center;
+    width: 45px; /* Icon circle ki चौड़ाई (width) */
+    height: 45px; /* Icon circle ki ऊंचाई (height) */
+    border-radius: 50%; /* Isse circular banega */
+    color: #fff; /* Icons ka color (safed) */
+    text-decoration: none; /* Underline hatane ke liye */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition for desired hover effects */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Thoda shadow dene ke liye */
+    outline: none; /* Browser default outline ko bhi hata dega */
+}
+
+.footer-social-row .social-icon i {
+    font-size: 22px; /* Icon ka size circle ke andar */
+}
+
+/* Har icon ke liye specific background color */
+.footer-social-row .facebook { background-color: #1877F2; } /* Facebook Blue */
+.footer-social-row .pinterest { background-color: #E60023; } /* Pinterest Red */
+.footer-social-row .twitter { background-color: #000000; } /* X/Twitter Black */
+.footer-social-row .telegram { background-color: #0088CC; } /* Telegram Blue */
+.footer-social-row .youtube { background-color: #FF0000; } /* YouTube Red */
+
+/* Social Icons Hover Effects (No Unwanted Blue) */
+.footer-social-row .social-icon:hover {
+    transform: translateY(-5px) scale(1.05); /* Upar uthega aur bada hoga */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Zyada gehra shadow */
+}
+
+/* Mobile View ke liye Adjustments (Max-width 768px se kam screens ke liye) */
+@media (max-width: 768px) {
+    /* footer-main-grid pehle hi 1fr hai, isliye elements stack honge.
+        Yahan hum unki spacing aur alignment adjust karenge. */
+    .footer-main-grid {
+        grid-template-columns: 1fr; /* Mobile par sab columns ek ke neeche ek */
+        gap: 25px; /* Mobile par sections ke beech thoda kam faasla */
+    }
+
+    /* Har footer section ke content ko center karein */
+    .footer-about-section,
+    .footer-links-section,
+    .footer-bottom-bar {
+        text-align: center;
+        margin-bottom: 0; /* Grid gap property se spacing control karein */
+    }
+
+    /* Headings aur paragraphs ko bhi center karein */
+    .footer-about-section .footer-site-logo,
+    .footer-about-section .footer-welcome-heading,
+    .footer-about-section .footer-description-paragraph,
+    .footer-links-section h3,
+    .footer-copyright-row p {
+        text-align: center;
+    }
+
+    /* Footer links ko display: block de dein takay ek ke neeche ek aayen */
+    .footer-links-section ul {
+        padding: 0;
+        text-align: center; /* Links ki list ko center karein */
+    }
+    .footer-links-section li {
+        display: block; /* Links ko ek ke neeche ek laye */
+        margin-bottom: 8px; /* Links ke beech thodi jagah */
+        padding: 0; /* Extra padding remove karein */
+    }
+
+    /* Social icons section ki margin adjust karein */
+    .footer-social-row {
+        margin-bottom: 10px; /* Social icons aur copyright ke beech space */
+        padding-top: 15px; /* Social icons section ko thoda upar se space dein */
+    }
+}
+
+
+/*
+=====================================================
+    SECURITY BADGE & POPUP STYLES - FINAL VERSION
+=====================================================
+*/
+
+/* Security Badge Small Button Style */
+/* IDEA 2: THE MINIMALIST BADGE STYLE */
+#security-report-btn {
+    background-color: transparent; /* Koi background nahi */
+    color: #0073aa; /* Standard link jaisa neela rang */
+    border: none; /* Koi border nahi */
+    padding: 5px 0; /* Sirf upar neeche thori padding */
+    font-size: 13px;
+    font-weight: 500; /* Medium weight, bohot bold nahi */
+    border-radius: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+    transition: color 0.2s ease;
+}
+
+#security-report-btn:hover {
+    color: #005075; /* Hover par text gehra ho jayega */
+}
+
+#security-report-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor; /* Icon ka color hamesha text jaisa rahega */
+}
+
+/* Popup Overlay Style */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    padding: 15px;
+}
+
+/* Popup Content Box */
+#security-popup .popup-content {
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    font-family: sans-serif;
+    color: #333;
+}
+#security-popup .popup-content h3{
+  margin-top:0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+#security-popup .popup-close {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #888;
+}
+#security-popup .popup-close:hover{
+    color: #000;
+}
+/* Hash Info Styling */
+#security-popup .hash-info {
+    margin-top: 15px;
+}
+#security-popup .hash-info strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-size: 14px;
+}
+#security-popup .hash-info code {
+    display: block;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 4px;
+    word-wrap: break-word;
+    font-family: monospace;
+    color: #333;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* =================================
+   POPUP APP HEADER STYLING
+   ================================= */
+
+.popup-app-header {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Icon aur text ke beech fasla */
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.popup-app-icon img {
+    width: 64px; /* Icon ka size */
+    height: 64px;
+    border-radius: 12px; /* Gol corners */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.popup-app-info .popup-app-title {
+    margin: 0 0 4px 0;
+    padding: 0;
+    border: none;
+    font-size: 20px;
+    font-weight: 600;
+    color: #222;
+	position: relative; /* Yeh line add ki hai */
+    top: 10px; /* Yeh line add ki hai (upar move karne ke liye) */
+}
+
+.popup-app-info .popup-app-version {
+    font-size: 14px;
+    color: #666;
+	 position: relative; /* Yeh line add ki hai */
+    top: -25px; /* Yeh line add ki hai (upar move karne ke liye) */
+	left: 4px; /* Nayi line: Dayen/bayen move karne ke liye */
+}
+
+.security-report-heading {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
